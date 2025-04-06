@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mubin Pinjar | Portfolio</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <canvas id="glitterCanvas"></canvas>
+
+    <style>
+        #glitterCanvas {
+            position:fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+
+    
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1a1a40);
+            background-size: 400% 400%;
+            animation: galaxyBG 20s ease infinite;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-image:
+                radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+                radial-gradient(1px 1px at 40% 80%, #fff, transparent),
+                radial-gradient(1px 1px at 60% 50%, #fff, transparent),
+                radial-gradient(1px 1px at 80% 20%, #fff, transparent),
+                radial-gradient(1px 1px at 10% 70%, #fff, transparent),
+                radial-gradient(1px 1px at 90% 90%, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: twinkling 3s infinite alternate;
+            z-index: 0;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        @keyframes galaxyBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes twinkling {
+            0% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 10;
+            }
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 60px 20px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            margin: 20px auto;
+            width: 85%;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        }
+
+
+.main-header {
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+}
+
+.tab-bar {
+    display: flex;
+    gap: 20px;
+    background-color: #002f3b;
+    padding: 10px 20px;
+    border-radius: 12px;
+}
+
+.tab-bar a {
+    text-decoration: none;
+    color: #00f0ff;
+    font-weight: bold;
+}
+
+.tab-bar a:hover {
+    color: white;
+}
+
+.contact-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.contact-links a {
+    color: #00f0ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-links a:hover {
+    color: white;
+}
+
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #139ca0;
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #05020c;
+        }
+
+        .highlight {
+            color: #00f0ff;
+            font-weight: bold;
+        }
+
+        p,
+        .section-text {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .skills-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+            color: #fff;
+        }
+
+        .skill {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 255, 255, 0.2);
+    font-size: 1rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.skill:hover {
+    transform: scale(1.05);
+    background-color: rgba(0, 255, 255, 0.15);
+}
+
+
+        .project,
+        .internship {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project h3,
+        .internship h3 {
+            color: #ffffff;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    
+    <script src="script.js"></script>
+
+    
+    <header class="main-header">
+        <div class="nav-container">
+          <div class="tab-bar">
+            <a href="#about">About</a>
+            <a href="#what-i-do">What I Do</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#internships">Internships</a>
+          </div>
+      
+          <div class="contact-links">
+            <a href="mailto:your@email.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/yourgithub" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://drive.google.com/file/d/1XwhNqwciD8JuNlncjJFq7PrDUYxZwQTb/view?usp=sharing" download title="Download Resume" class="resume-link">Resume</a>
+          </div>
+        </div>
+      </header>
+      
+
+    <section id="home" style="display: flex; height: 25vh; font-family: Arial, sans-serif; background: rgba(255, 255, 255, 0.05);">
+        <!-- Left Side -->
+        <div onclick="showRight()" 
+         style="flex: 1; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+        
+        <!-- ✅ This is the container your JS is targeting -->
+        <div class="container" style="text-align: center;">
+            <h1 style="color: #ffffff;">
+                Hi, I'm <span style="color: #00f0ff;">Mubin Pinjar</span>
+            </h1>
+            <!-- 👇 Your JS will inject the greeting <p> here -->
+        </div>
+    
+        <!-- Right Side -->
+        <div id="rightContent" style="flex: 1; display: none; justify-content: center; align-items: center;">
+            <p style="font-size: 18px; color: #ffffff;">Electronics & Communication Engineering Student | Web Developer | Data Analyst</p>
+        </div>
+    </section>
+    
+    <script>
+        function showRight() {
+            document.getElementById("rightContent").style.display = "flex";
+        }
+    </script>
+    
+
+
+    <!-- ===== About Section ===== -->
+    <section id="about">
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; align-items: center;">
+          <!-- Profile Photo -->
+          <img src="D:\MYPRJCT\assessts\1000020188.jpg" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #00f0ff; box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);">
+      
+          <div style="flex: 1 1 300px; background-color: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+            <h2><i class="fas fa-user" style="color: #00f0ff;"></i> About Me</h2>
+      
+            <p class="section-text">
+              I'm a final-year Electronics and Communication Engineering student with a passion for technology, coding,
+              and creative problem-solving. I enjoy working on web development projects and exploring data analysis using
+              Python. I'm always eager to learn new things and improve my skills.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- ===== Profession Section ===== -->
+    <section id="profession">
+        <div style="flex: 1 1 300px; background-color: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+
+        <!-- <h2>What I Do</h2> -->
+        <h2><i class="fas fa-tools" style="color: #00f0ff;"></i> What I Do</h2>
+
+        <p class="section-text">
+            I create responsive websites using HTML, CSS, and JavaScript. I also analyze data using Python and tools
+            like Power BI. I enjoy building smart electronic projects using Arduino. My goal is to solve real-life
+            problems with technology and make things easier for people.
+        </p>
+    </section>
+
+    <!-- ===== Skills Section ===== -->
+    <section id="skills">
+        <h2><i class="fas fa-code" style="color: #00f0ff;"></i> Skills</h2>
+
+        <div class="skills-list">
+            <div class="skill"><i class="fab fa-html5" style="color: #e44d26;"></i> HTML</div>
+            <div class="skill"><i class="fab fa-css3-alt" style="color: #264de4;"></i> CSS</div>
+            <div class="skill"><i class="fab fa-js" style="color: #f0db4f;"></i> JavaScript</div>
+            <div class="skill"><i class="fab fa-python" style="color: #306998;"></i> Python</div>
+            <div class="skill"><i class="fas fa-chart-bar" style="color: #28a745;"></i> Data Analysis</div>
+            <div class="skill"><i class="fas fa-code" style="color: #6f42c1;"></i> C Programming</div>
+            <div class="skill"><i class="fas fa-microchip" style="color: #ff5722;"></i> Arduino</div>
+          </div>
+          
+        
+    </section>
+
+    <!-- ===== Projects Section ===== -->
+    <section id="projects">
+        <h2><i class="fas fa-tasks" style="color: #17a2b8;"></i> Projects</h2>
+        <div class="project-list">
+            <div class="project">
+                <h3><i class="fas fa-robot" style="color: #00f0ff;"></i> Smart Vacuum Cleaner Robot</h3>
+
+                <p>A hardware project using Arduino, sensors, and motors to automate home cleaning. Features include
+                    Bluetooth control, obstacle detection, and dust collection. Additional capabilities: Scheduled
+                    Cleaning and Automatic Dust Disposal.</p>
+            </div>
+            <div class="project">
+                    <h3><i class="fas fa-chart-line" style="color: #00f0ff;"></i> AI-Powered E-commerce Review Analyzer</h3>
+                <p>A Python-based tool that performs sentiment analysis on product reviews using Pandas and NLP
+                    techniques. Helps identify customer satisfaction trends.</p>
+            </div>
+            <div class="project">
+                <h3><i class="fas fa-chart-line" style="color: #00f0ff;"></i> Real-time Human Detection System</h3>
+                
+                <p>Developed using Python and OpenCV to detect and track humans in live video streams. Utilized Haar
+                    Cascades and deep learning for object recognition and alerts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Internships Section ===== -->
+    <section id="internships">
+        <h2><i class="fas fa-building" style="color: #00f0ff;"></i> Internships</h2>
+
+        <div class="internship-list">
+            <div class="internship">
+                <h3><i class="fas fa-briefcase" style="color: #00f0ff;"></i> Data Quality Analyst Intern</h3>
+                <ul style="text-align: left; max-width: 800px; margin: auto; padding-left: 20px;">
+                <p><strong>Organization:</strong> NSDC-Rooman Technologies<br>
+                    <strong>Duration:</strong> 6 Months<br>
+                    <strong>Description:</strong> Built a Home Automation System using Amazon Alexa and IoT-based
+                    microcontrollers. Worked with Arduino, sensors, actuators, and communication modules like Bluetooth
+                    and Wi-Fi. Understood basics of IoT architecture, embedded C, circuit interfacing, and simulation.
+                    Gained foundational knowledge in embedded programming and project prototyping. Also Worked on
+                    designing and implementing responsive user interfaces using HTML, CSS, with Practised basic Python
+                    Programming.
+                </p>
+            </div>
+
+            <div class="internship">
+
+                <h3><i class="fas fa-briefcase" style="color: #00f0ff;"></i> IoT & Embedded Systems Intern</h3>
+                <ul style="text-align: left; max-width: 800px; margin: auto; padding-left: 20px;">
+
+                <p><strong>Organization:</strong> Inventeron Technologies & Business Solutions<br>
+                    <strong>Duration:</strong> 2 Months<br>
+                    <strong>Description:</strong> Worked on data cleaning, quality assurance, and Python-based scripts
+                    for validating datasets. Gained hands-on experience in data profiling and business reporting using
+                    Excel and Power BI.
+                </p>
+            </div>
+
+            <div class="internship">
+
+                <h3><i class="fas fa-briefcase" style="color: #00f0ff;"></i> UI Developer </h3>
+                <ul style="text-align: left; max-width: 800px; margin: auto; padding-left: 20px;">
+
+                
+                <p><strong>Organization:</strong>Infosys Foundation & ICT Academy<br>
+                    <strong>Duration:</strong> 1 Month<br>
+                    <strong>Description:</strong> Worked on designing and implementing responsive user interfaces using
+                    HTML, CSS, and JavaScript. Gained experience in front-end debugging, component styling, and user
+                    interaction design. Collaborated with the development team to enhance the user experience for
+                    web-based
+                    dashboards.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Contact Section ===== -->
+    <!-- <section id="contact">
+        <h2>Contact Me</h2>
+        <div class="contact-links">
+            <a href="mailto:mubinpinjar@example.com">Email</a>
+            <a href="https://www.linkedin.com/in/mubin-pinjar/" target="_blank">LinkedIn</a>
+            <a href="https://github.com/mubinpinjar" target="_blank">GitHub</a>
+        </div>
+        <a class="resume-btn" href="https://drive.google.com/file/d/1XwhNqwciD8JuNlncjJFq7PrDUYxZwQTb/view?usp=sharing"
+            target="_blank">Download Resume</a>
+    </section> -->
+
+
+
+</body>
+
+</html>
